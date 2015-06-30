@@ -7,11 +7,7 @@ import sqlalchemy
 
 app = Flask(__name__)
 
-import sys
-import os.path
-def install_secret_key(app, filename='secret_key'):
-	filename = os.path.join(app.instance_path, filename)
-	app.config['SECRET_KEY'] = open(filename, 'key.txt').read()
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 login_manager = LoginManager()
 login_manager.init_app(app)

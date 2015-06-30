@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #program za login, register, chat, 
 import flask
 from Flask_db import *

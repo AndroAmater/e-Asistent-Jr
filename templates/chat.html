@@ -1,17 +1,6 @@
-<!doctype html>
-<title>Test Chat</title>
-<head>
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap-3.3.4-dist/css/bootstrap.css') }}">
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-</head>
-<div class=page>
-  <div class="jumbotron">
-    <div class="container-fluid">
-      <h1>Test Chat lololo</h1>
-    </div>
-  </div>
-
-	<div class=metanav>
-    <a href="{{ url_for('login') }}">log in</a>
-  </div>
-</div>
+{% extends "index.html" %}
+{% block body %}
+  {% if session.logged_in %}
+   <h2>HZZZ IT WORKS!</h2>
+  {% endif %}
+{% endblock %}

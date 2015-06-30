@@ -5,9 +5,23 @@
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 </head>
 <div class=page>
+  {% block head %}
   <div class="jumbotron">
     <div class="container-fluid">
       <h1>Test Chat</h1>
     </div>
+  </div>
+  {% endblock %}
+  
+  <div class="navbar">
+  {% if not is_active %}
+    <a href="{{ url_for('login') }}">log in</a>
+  {% else %}
+    <a href="{{ url_for('logout') }}">log out</a>
+  {% endif %}
+  </div>
+
+  <div>
+    {% block body %}{% endblock %}
   </div>
 </div>

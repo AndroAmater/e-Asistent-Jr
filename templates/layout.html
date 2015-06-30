@@ -14,7 +14,7 @@
   {% endblock %}
   
   <div class="navbar">
-     {% if not is_active %}
+  {% if not is_active %}
     <a href="{{ url_for('login') }}">log in</a>
   {% else %}
     <a href="{{ url_for('logout') }}">log out</a>

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #program za login, register, chat, 
 from flask import * 
 from flask.ext.login import LoginManager, login_required
@@ -5,7 +6,7 @@ from Flask_db import *
 import sqlalchemy
 
 app = Flask(__name__)
-
+app.config['SECRET_KEY'] = open(filename, 'key.txt').read()
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -14,8 +15,7 @@ login_manager.init_app(app)
 @app.route('/')
 def chat():
 	"""chat"""
-<<<<<<< HEAD
-	return 'Hello World!'
+	return render_template('chat.html')
 
 def load_user(userid):
     return User.get(userid)
@@ -33,7 +33,7 @@ def login():
         if not next_is_valid(next):
             return flask.abort(400)
 
-        return flask.redirect(next or flask.url_for('index'))
+        return flask.redirect(next or flask.url_for('chat'))
     return flask.render_template('login.html', form=form)
 
 @app.route("/settings")
@@ -50,27 +50,6 @@ def logout():
 def unauthorized():
     # do stuff
     return a_response
-
-=======
-	if loged == True:
-		return render_template('chat.html')
-	else:
-		return render_template('chat.html')
-
-@app.route('/login')
-def login(username, password):
-	"""Login"""
-	user = User.query.filter_by(username = username).first()
-	password = User.query.filter_by(password = password).first()
-	if password == password and username == username:
-		loged = True
-		flask.redirect(url_for('chat'))
-	else:
-    	#gres na /login
-		loged = False
-		return "Login failed"
-	return render_template('login.html')
->>>>>>> 90be891e548d21070b3e4a1bb445d3e9ccf5971a
 
 @app.route('/register')
 def add_user(username, password, email):

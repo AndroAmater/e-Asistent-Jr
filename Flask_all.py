@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #program za login, register, chat, 
-import flask
+from flask import *
 from Flask_db import *
 import sqlalchemy
 
@@ -36,6 +36,6 @@ def add_user(username, password, email):
  	Flask_db.db.commit()
  	loged = True
 	
-
-
-
+if __name__ == "__main__":
+	app.debug = True
+	app.run()

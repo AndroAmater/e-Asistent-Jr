@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #program za login, register, chat, 
 import flask
 from Flask_db import *
@@ -8,18 +9,22 @@ app.debug = True
 @app.route('/')
 def chat():
 	"""chat"""
-	return 'Hello World!'
+	if loged == True:
+		return render_template('layout.html')
+	else:
+		app.route(url_for('login'))
 
 @app.route('/login')
-def login(,username, password):
+def login(username, password):
 	"""Login"""
 	user = User.query.filter_by(username = username).first()
 	password = User.query.filter_by(password = password).first()
-    if password == password and username == username:
-       flask.redirect(url_for('chat')
-       	loged = True
-    else:
-    	#gres na /login
+	if password == password and username == username:
+		flask.redirect(url_for('chat'))
+		loged = True
+	else:
+		return "Login failed"
+
 @app.route('/register')
 def add_user(username, password, email):
 	"""Registracija"""

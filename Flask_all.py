@@ -35,10 +35,14 @@ def chat():
 	"""chat"""
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return render_template('chat.html')
 =======
 	return 'Hello World!'
 >>>>>>> origin/Vidra
+=======
+	return render_template('chat.html')
+>>>>>>> origin/master
 =======
 	return render_template('chat.html')
 >>>>>>> origin/master

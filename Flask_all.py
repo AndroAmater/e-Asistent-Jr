@@ -16,7 +16,11 @@ login_manager.init_app(app)
 @app.route('/')
 def chat():
 	"""chat"""
+<<<<<<< HEAD
 	return render_template('chat.html')
+=======
+	return 'Hello World!'
+>>>>>>> origin/Vidra
 
 def load_user(userid):
     return User.get(userid)
@@ -63,6 +67,3 @@ def add_user(username, password, email):
 if True == True:
 	app.debug = True
 	app.run()
-
-
-

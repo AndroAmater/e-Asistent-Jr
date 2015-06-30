@@ -14,7 +14,6 @@ login_manager.init_app(app)
 @app.route('/')
 def chat():
 	"""chat"""
-<<<<<<< HEAD
 	return 'Hello World!'
 
 def load_user(userid):

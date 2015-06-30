@@ -55,7 +55,7 @@ def unauthorized():
 	if loged == True:
 		return render_template('chat.html')
 	else:
-		return render_template('login.html')
+		return render_template('chat.html')
 
 @app.route('/login')
 def login(username, password):

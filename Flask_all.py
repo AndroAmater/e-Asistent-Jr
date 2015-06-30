@@ -11,9 +11,9 @@ loged = False
 def chat():
 	"""chat"""
 	if loged == True:
-		return render_template('layout.html')
+		return render_template('chat.html')
 	else:
-		app.route(url_for('login'))
+		return render_template('login.html')
 
 @app.route('/login')
 def login(username, password):
@@ -27,6 +27,7 @@ def login(username, password):
     	#gres na /login
 		loged = False
 		return "Login failed"
+	return render_template('login.html')
 
 @app.route('/register')
 def add_user(username, password, email):

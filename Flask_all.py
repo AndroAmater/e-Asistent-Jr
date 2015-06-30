@@ -50,27 +50,6 @@ def unauthorized():
     # do stuff
     return a_response
 
-=======
-	if loged == True:
-		return render_template('chat.html')
-	else:
-		return render_template('chat.html')
-
-@app.route('/login')
-def login(username, password):
-	"""Login"""
-	user = User.query.filter_by(username = username).first()
-	password = User.query.filter_by(password = password).first()
-	if password == password and username == username:
-		loged = True
-		flask.redirect(url_for('chat'))
-	else:
-    	#gres na /login
-		loged = False
-		return "Login failed"
-	return render_template('login.html')
->>>>>>> 90be891e548d21070b3e4a1bb445d3e9ccf5971a
-
 @app.route('/register')
 def add_user(username, password, email):
 	"""Registracija"""
@@ -82,6 +61,3 @@ def add_user(username, password, email):
 if True == True:
 	app.debug = True
 	app.run()
-
-
-

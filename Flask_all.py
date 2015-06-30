@@ -1,20 +1,39 @@
+#!/usr/bin/env python
 #program za login, register, chat, 
 from flask import * 
 from flask.ext.login import LoginManager, login_required
 from Flask_db import *
 import sqlalchemy
+from flask.ext.wtf import Form
+from wtforms import StringField, BooleanField
+from wtforms.validators import DataRequired
+
 
 app = Flask(__name__)
-
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+class LoginForm(Form):
+    username = StringField('username', validators = [DataRequired])
+    password = StringField('password', validators = [DataRequired])
+    remember_me = BooleanField('remember_me', default=False)
+
+class RegisterForm(Form):
+    email = StringField('email', validators = [DataRequired])
+    username = StringField('username', validators = [DataRequired])
+    password = StringField('password', validators = [DataRequired])
+    password2 = StringField('password2', validators = [DataRequired])
+    if password == password2 :
+        pass
+    else:
+        flask.flash('Passwords don\'t match!')
 
 @app.route('/')
 def chat():
 	"""chat"""
-	return 'Hello World!'
+	return render_template('chat.html')
 
 def load_user(userid):
     return User.get(userid)
@@ -32,8 +51,8 @@ def login():
         if not next_is_valid(next):
             return flask.abort(400)
 
-        return flask.redirect(next or flask.url_for('index'))
-    return flask.render_template('login.html', form=form)
+        return flask.redirect(next or flask.url_for('chat'))
+    return render_template('login.html', form=form)
 
 @app.route("/settings")
 @login_required
@@ -61,3 +80,6 @@ def add_user(username, password, email):
 if True == True:
 	app.debug = True
 	app.run()
+
+
+

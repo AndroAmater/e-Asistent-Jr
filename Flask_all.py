@@ -1,18 +1,15 @@
-#!/usr/bin/env python
 #program za login, register, chat, 
 import flask
 from Flask_db import *
 import sqlalchemy
 
 app.debug = True
+loged = False
 
 @app.route('/')
 def chat():
 	"""chat"""
-	if loged == True:
-		return render_template('layout.html')
-	else:
-		app.route(url_for('login'))
+	return 'Hello World!'
 
 @app.route('/login')
 def login(username, password):
@@ -20,10 +17,11 @@ def login(username, password):
 	user = User.query.filter_by(username = username).first()
 	password = User.query.filter_by(password = password).first()
 	if password == password and username == username:
-		flask.redirect(url_for('chat'))
 		loged = True
+		flask.redirect(url_for('chat'))
 	else:
-		return "Login failed"
+    	#gres na /login
+		loged = False
 
 @app.route('/register')
 def add_user(username, password, email):

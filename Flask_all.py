@@ -6,7 +6,12 @@ from Flask_db import *
 import sqlalchemy
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = open(filename, 'key.txt').read()
+
+import sys
+import os.path
+def install_secret_key(app, filename='secret_key'):
+	filename = os.path.join(app.instance_path, filename)
+	app.config['SECRET_KEY'] = open(filename, 'key.txt').read()
 
 login_manager = LoginManager()
 login_manager.init_app(app)
